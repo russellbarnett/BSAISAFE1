@@ -616,6 +616,8 @@ body.is-dark .hint { color: rgba(255, 255, 255, 0.5); }
   .slide { transition: none; }
   .current .build { opacity: 1; transform: none; animation: auto ease 0s 1 normal none running none; }
 }
+
+.tool-card .tool-sub { font-family: var(--font-body); font-weight: 700; font-size: clamp(10px, 0.78vw, 12px); color: var(--ink); line-height: 1.45; margin-top: 6px; letter-spacing: 0.01em; }
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -724,24 +726,29 @@ body.is-dark .hint { color: rgba(255, 255, 255, 0.5); }
       <div class="layer-arrow build b4" style="">↓</div>
       <div class="tool-grid">
         <div class="tool-card build b4" style="">
-          <div class="tool-cat">Foundation Models</div>
-          <div class="tool-list">ChatGPT · Claude · Gemini</div>
+          <div class="tool-cat">Foundation + Reasoning</div>
+          <div class="tool-list">GPT-5.5 · Claude · Gemini<br>Open Models</div>
         </div>
         <div class="tool-card build b4" style="">
-          <div class="tool-cat">Image Models</div>
-          <div class="tool-list">Midjourney · Adobe Firefly · DALL·E</div>
+          <div class="tool-cat">Image + Visual Gen</div>
+          <div class="tool-list">Nano Banana 2 · ChatGPT Images<br>Midjourney · Firefly</div>
         </div>
         <div class="tool-card build b4" style="">
-          <div class="tool-cat">Video &amp; Audio</div>
-          <div class="tool-list">Runway · Descript · ElevenLabs</div>
+          <div class="tool-cat">Video + Omni Motion</div>
+          <div class="tool-list">OMNI · Runway · Veo<br>Kling · Seedance</div>
         </div>
         <div class="tool-card build b5" style="">
-          <div class="tool-cat">Design Tools</div>
-          <div class="tool-list">Figma · Canva</div>
+          <div class="tool-cat">Voice + Audio</div>
+          <div class="tool-list">ElevenLabs · OpenAI Realtime<br>Gemini Live · Lyria</div>
         </div>
         <div class="tool-card build b5" style="">
-          <div class="tool-cat">Automation Tools</div>
-          <div class="tool-list">Copy.ai · Jasper</div>
+          <div class="tool-cat">Agents + Automation</div>
+          <div class="tool-list">Anthropic · OpenAI · Gemini</div>
+          <div class="tool-sub">Scoped tool calls<br>Skills · MCPs · CLIs</div>
+        </div>
+        <div class="tool-card build b5" style="">
+          <div class="tool-cat">Asset + Data Layer</div>
+          <div class="tool-list">BrandStudios.AI<br>Client Cloud Accounts</div>
         </div>
       </div>
     </div>
