@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
 @charset "utf-8";
 
-:root { --bg: #EFECEB; --bg-deep: #E5E1DF; --paper: #F5F3F1; --ink: #1A2461; --ink-soft: #2A3475; --ink-mute: #555E8C; --ink-dim: rgba(26,36,97,0.65); --orange: #ED4C15; --orange-soft: #E8553C; --tan: #D4A574; --sage: #9FB07A; --rule: rgba(26,36,97,0.18); --rule-soft: rgba(26,36,97,0.08); --rule-dark: rgba(255,255,255,0.14); --font-display: 'Source Serif 4',Georgia,serif; --font-body: 'Poppins',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; }
+:root { --bg: #EFECEB; --bg-deep: #E5E1DF; --paper: #F5F3F1; --ink: #1A2461; --ink-soft: #2A3475; --ink-mute: #555E8C; --ink-dim: rgba(26,36,97,0.65); --orange: #ED4C15; --orange-soft: #E8553C; --tan: #D4A574; --sage: #9FB07A; --rule: rgba(26,36,97,0.18); --rule-soft: rgba(26,36,97,0.08); --rule-dark: rgba(255,255,255,0.14); --font-display: 'Source Serif 4',Georgia,serif; --font-body: 'Poppins',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; --slide-x: 8vw; --header-top: clamp(22px, 3vh, 38px); --brand-h: clamp(22px, 2.4vh, 30px); --brand-w: calc(var(--brand-h) * 9.24); --header-gap: clamp(18px, 2vw, 32px); --header-safe: calc(var(--header-top) + var(--brand-h) + clamp(46px, 6vh, 78px)); }
 
 * { box-sizing: border-box; margin: 0px; padding: 0px; }
 
@@ -15,7 +15,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 
 .deck { position: fixed; inset: 0px; overflow: hidden; }
 
-.slide { position: absolute; inset: 0px; display: flex; flex-direction: column; justify-content: center; padding: 8vh 8vw; opacity: 0; pointer-events: none; transition: opacity 500ms cubic-bezier(0.2, 0.7, 0.2, 1); background: var(--bg); }
+.slide { position: absolute; inset: 0px; display: flex; flex-direction: column; justify-content: center; padding: var(--header-safe) var(--slide-x) 8vh; opacity: 0; pointer-events: none; transition: opacity 500ms cubic-bezier(0.2, 0.7, 0.2, 1); background: var(--bg); }
 
 .slide.current { opacity: 1; pointer-events: auto; z-index: 2; }
 
@@ -24,10 +24,21 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .slide.dense { justify-content: flex-start; }
 
 @media (max-width: 760px) {
-  .slide { padding: 7vh 7vw; }
+  :root { --slide-x: 7vw; --header-top: clamp(18px, 3vh, 28px); --brand-h: clamp(18px, 2.6vh, 24px); --header-gap: 0px; --header-safe: calc(var(--header-top) + var(--brand-h) + clamp(54px, 8vh, 82px)); }
+  .slide { padding: var(--header-safe) var(--slide-x) 7vh; }
+}
+
+@media (max-width: 760px), (max-height: 640px) {
+  .slide:not(.title-slide) { justify-content: flex-start; }
 }
 
 .eyebrow { font-family: var(--font-body); font-weight: 700; font-size: clamp(11px, 0.9vw, 14px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: clamp(28px, 3.4vh, 48px); }
+
+.slide > .eyebrow { position: absolute; top: calc(var(--header-top) + (var(--brand-h) - 1em) / 2); left: calc(var(--slide-x) + var(--brand-w) + var(--header-gap)); right: var(--slide-x); margin-bottom: 0px; line-height: 1.15; overflow-wrap: anywhere; }
+
+@media (max-width: 760px) {
+  .slide > .eyebrow { top: calc(var(--header-top) + var(--brand-h) + 14px); left: var(--slide-x); }
+}
 
 .dark .eyebrow { color: var(--orange); }
 
@@ -556,7 +567,7 @@ h2.title-section { font-family: var(--font-display); font-size: clamp(44px, 6vw,
 
 .chrome > * { pointer-events: auto; }
 
-.brand-mark { position: fixed; top: 3vh; left: 8vw; display: flex; align-items: center; height: clamp(18px, 2.2vh, 26px); z-index: 100; }
+.brand-mark { position: fixed; top: var(--header-top); left: var(--slide-x); display: flex; align-items: center; width: var(--brand-w); height: var(--brand-h); z-index: 100; }
 
 .brand-mark img { height: 100%; width: auto; display: block; position: absolute; top: 0px; left: 0px; transition: opacity 200ms; }
 
@@ -566,7 +577,7 @@ body.is-dark .brand-mark .bm-light { opacity: 0; }
 
 body.is-dark .brand-mark .bm-dark { opacity: 1; }
 
-.counter { position: fixed; top: 3vh; right: 8vw; font-family: var(--font-body); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; color: var(--ink-mute); z-index: 100; transition: color 300ms; }
+.counter { position: fixed; top: var(--header-top); right: var(--slide-x); font-family: var(--font-body); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; color: var(--ink-mute); z-index: 100; transition: color 300ms; }
 
 body.is-dark .counter { color: rgba(255, 255, 255, 0.55); }
 
